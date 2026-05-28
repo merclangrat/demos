@@ -1,1 +1,1 @@
-sys/dev/ls.c
+../sys/dev/ls.c
