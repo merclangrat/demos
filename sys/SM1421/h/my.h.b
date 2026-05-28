@@ -1,0 +1,5 @@
+/* kONFIGURACIQ GIBKIH DISKOW MY (DLQ Qbus) */
+#define NMY     0 /* ~ISLO DISKOWODOW NA KONTROLLERE */
+#define NMYC    0   /* ~ISLO KONTROLLEROW */
+#define MY_SPL  /* uSTANAWLIWATX W myintr NIZKIJ PRIORITET DLQ kl */
+#define MY_DKN  1
