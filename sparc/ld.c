@@ -90,7 +90,11 @@ char	goodnm[] = "__.SYMDEF";
 #define TABSZ	700
 struct tab
 {	char cname[8];
+#ifdef sparc
+	int  cloc;
+#else
 	long cloc;
+#endif
 } tab[TABSZ];
 int tnum;
 
@@ -609,9 +613,8 @@ char *acp;
 #ifdef sparc
                 {
                         register n;
-                        for (n = 0; n < tnum; n++) {
+                        for (n = 0; n < tnum; n++)
                                 tab[n].cloc = GET32(tab[n].cloc);
-                        }
                 }
 #endif
 		while (ldrand());
@@ -666,7 +669,11 @@ ldrand()
 		if ((pp = slookup(tab[i].cname)) == 0)
 			continue;
 		sp = *pp;
-		if (sp->stype != EXTERN+UNDEF)
+#ifdef sparc
+		if ((!sp) || (sp->stype != EXTERN+UNDEF))
+#else
+		if (sp->stype != EXTERN+UNDEF) 
+#endif
 			continue;
 		step(tab[i].cloc >> 1);
 	}
